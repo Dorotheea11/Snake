@@ -11,7 +11,7 @@ let body = [];
 let fruitEaten = false;
 let isGameOver = false;
 let timerId;
-
+console.log("Test");
 
 const gridElement = document.querySelector("#grid");
 const grid = getEmptyGrid(WIDTH, HEIGHT, EMPTY_CODE); 
