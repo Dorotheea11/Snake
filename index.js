@@ -1,3 +1,5 @@
+import DOMController from "./classes/DOMController";
+
 const WIDTH = 8;
 const HEIGHT = 8;
 const EMPTY_CODE = '.';
@@ -11,7 +13,7 @@ let body = [];
 let fruitEaten = false;
 let isGameOver = false;
 let timerId;
-console.log("Test");
+
 
 const gridElement = document.querySelector("#grid");
 const grid = getEmptyGrid(WIDTH, HEIGHT, EMPTY_CODE); 
@@ -24,7 +26,7 @@ grid[head.row][head.col] = HEAD_CODE;
 
 let prevHead = {row: head.row, col: head.col};
 
-
+//==================================================DOM CONTROLLER
 document.body.addEventListener("keydown", (event) => {
     if (event.key === "ArrowDown" && directionY !== -1) { 
         directionX = 0;
@@ -59,7 +61,7 @@ document.querySelectorAll("button").forEach(buttonElement => {
     })
 });
 
-document.querySelector('.replay-button').addEventListener('click', restartGame); // sa o punem in codeblock ul de deasupra?
+document.querySelector('.replay-button').addEventListener('click', restartGame); 
 
 createPageGrid(grid);
 
@@ -77,7 +79,7 @@ function createPageGrid(grid) {
     });     
     console.log(gridElement);
 }
-
+//====================================================
 setInterval(loop, FRAME_RATE);
 
 function loop() {
@@ -106,8 +108,8 @@ function clearGrid() {
 }
 
 function moveSnake() {
-    fruitEaten = (head.row === fruit.row && head.col === fruit.col); // nu se reseteaza each loop 
-    if (fruitEaten) {
+    fruitEaten = (head.row === fruit.row && head.col === fruit.col); 
+        if (fruitEaten) {
         body.unshift({row: prevHead.row, col: prevHead.col});
     }
     prevHead.row = head.row;
@@ -195,7 +197,7 @@ function restartGame() {
     document.querySelector('.game-status').textContent = '';
     document.querySelector('.replay-button').style.display = 'none';
 
-    timerId = setInterval(loop, FRAME_RATE);
+    timerId = setInterval(loop, FRAME_RATE); 
 }
   
 
